@@ -1,4 +1,4 @@
-package Arkratos.gameDev.com.Colirfy;
+package arkratos.gamedev.com.colirfy;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

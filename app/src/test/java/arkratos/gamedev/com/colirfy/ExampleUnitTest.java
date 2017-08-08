@@ -1,4 +1,4 @@
-package Arkratos.gameDev.com.Colirfy;
+package arkratos.gamedev.com.colirfy;
 
 import org.junit.Test;
 

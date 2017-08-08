@@ -1,4 +1,4 @@
-package Arkratos.gameDev.com.Colirfy;
+package arkratos.gamedev.com.colirfy;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -44,16 +44,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-        /*
-        ConstraintLayout.LayoutParams clpcontactUs = new ConstraintLayout.LayoutParams(
-        ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
-        contactUs.setLayoutParams(clpcontactUs);
-
-        constraintLayout.addView(contactUs);
-*/
-
 
 
 
