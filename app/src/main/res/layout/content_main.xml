@@ -50,6 +50,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginBottom="9dp" />
 
     <Button
@@ -65,6 +66,7 @@
         tools:layout_editor_absoluteY="454dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
         app:layout_constraintStart_toEndOf="@+id/btn_yellow"
         android:layout_marginBottom="9dp" />
 

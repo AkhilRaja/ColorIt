@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+      //  Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
 
 
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
             @Override
             public void onClick(View v) {
-                paint.setColor(Color.YELLOW);
+                paint.setColor(getResources().getColor(R.color.RandomTrial));
             }
         });
         blue.setOnClickListener(new View.OnClickListener() {
@@ -136,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             DisplayMetrics metrics = context.getResources().getDisplayMetrics();
             width = metrics.widthPixels;
             height = metrics.heightPixels;
+
             rect = new Rect(0,0,width,height);
             mBitmap = Bitmap.createScaledBitmap(mBitmap, width, height, false);
         }
@@ -205,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 //FloodFill f = new FloodFill();
                 //f.floodFill(bmp, pt, targetColor, replacementColor);
                 QueueLinearFloodFiller filler = new QueueLinearFloodFiller(mBitmap, targetColor, replacementColor);
-                filler.setTolerance(10);
+                filler.setTolerance(20);
                 filler.floodFill(pt.x, pt.y);
                 return null;
             }
@@ -222,52 +224,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
    // http://stackoverflow.com/questions/6371999/android-fill-image-with-colors
     //IMPORTANT
    // http://stackoverflow.com/questions/16968412/how-to-use-flood-fill-algorithm-in-android
-    public class FloodFill {
-        public void floodFill(Bitmap image, Point node, int targetColor,
-                              int replacementColor) {
-            int width = image.getWidth();
-            int height = image.getHeight();
-            int target = targetColor;
-            int replacement = replacementColor;
-            if (target != replacement) {
-                Queue<Point> queue = new LinkedList<Point>();
-                do {
-
-                    int x = node.x;
-                    int y = node.y;
-                    while (x > 0 && image.getPixel(x - 1, y) == target) {
-                        x--;
-
-                    }
-                    boolean spanUp = false;
-                    boolean spanDown = false;
-                    while (x < width && image.getPixel(x, y) == target) {
-                        image.setPixel(x, y, replacement);
-                        if (!spanUp && y > 0
-                                && image.getPixel(x, y - 1) == target) {
-                            queue.add(new Point(x, y - 1));
-                            spanUp = true;
-                        } else if (spanUp && y > 0
-                                && image.getPixel(x, y - 1) != target) {
-                            spanUp = false;
-                        }
-                        if (!spanDown && y < height - 1
-                                && image.getPixel(x, y + 1) == target) {
-                            queue.add(new Point(x, y + 1));
-                            spanDown = true;
-                        } else if (spanDown && y < height - 1
-                                && image.getPixel(x, y + 1) != target) {
-                            spanDown = false;
-                        }
-                        x++;
-                    }
-                } while ((node = queue.poll()) != null);
-            }
-        }
-    }
-
-
-
     //Mayor Class Optimize
 
     public class QueueLinearFloodFiller {
