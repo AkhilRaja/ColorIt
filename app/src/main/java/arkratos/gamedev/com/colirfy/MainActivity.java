@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,21 +17,34 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+
+import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
+import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
+import com.nightonke.boommenu.BoomButtons.SimpleCircleButton;
+import com.nightonke.boommenu.BoomMenuButton;
+import com.nightonke.boommenu.ButtonEnum;
+import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 
 import java.util.LinkedList;
 import java.util.Queue;
+
+
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
 
     private ConstraintLayout drawingLayout;
     private MyView myView;
-    Button red, blue, yellow;
     Paint paint;
 
     @Override
@@ -43,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-      //  Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
 
@@ -56,34 +70,25 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         drawingLayout.removeViewAt(0);
         drawingLayout.addView(myView);
 
+        BoomMenuButton boomMenuButton = (BoomMenuButton) findViewById(R.id.bmb);
+        boomMenuButton.setButtonEnum(ButtonEnum.SimpleCircle);
 
+        boomMenuButton.setPiecePlaceEnum(PiecePlaceEnum.DOT_5_1);
+        boomMenuButton.setButtonPlaceEnum(ButtonPlaceEnum.SC_5_1);
 
-        red = (Button) findViewById(R.id.btn_red);
-        blue = (Button) findViewById(R.id.btn_blue);
-        yellow = (Button) findViewById(R.id.btn_yellow);
-
-        red.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                paint.setColor(Color.RED);
-            }
-        });
-
-        yellow.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                paint.setColor(getResources().getColor(R.color.RandomTrial));
-            }
-        });
-        blue.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                paint.setColor(Color.BLUE);
-            }
-        });
+        for (int i = 0; i < boomMenuButton.getPiecePlaceEnum().pieceNumber(); i++) {
+            SimpleCircleButton.Builder builder = new SimpleCircleButton.Builder()
+                    .listener(new OnBMClickListener() {
+                        @Override
+                        public void onBoomButtonClick(int index) {
+                            // When the boom-button corresponding this builder is clicked.
+                            Toast.makeText(MainActivity.this, "Clicked " + index, Toast.LENGTH_SHORT).show();
+                        }
+                    }).normalColor(Color.WHITE);
+                    boomMenuButton.addBuilder(builder);
+        }
+        boomMenuButton.bringToFront();
+//        boomMenuButton.setNormalColor(R.color.);
     }
 
     @Override
@@ -118,6 +123,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         Canvas canvas;
         int width;
         int height;
+        int reduceX;
+        int reduceY;
+
         Rect rect;
         // Bitmap mutableBitmap ;
         public MyView(Context context) {
@@ -135,10 +143,16 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             this.path = new Path();
 
             DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-            width = metrics.widthPixels;
-            height = metrics.heightPixels;
 
-            rect = new Rect(0,0,width,height);
+            reduceX = (metrics.widthPixels/9);
+            reduceY = (metrics.heightPixels/9);
+            width = metrics.widthPixels - reduceX;
+            height = metrics.heightPixels - reduceY;
+
+            Log.d("Width and Height" , ""+reduceX+"  "+reduceY);
+
+
+          //  rect = new Rect(0,0,width,height);
             mBitmap = Bitmap.createScaledBitmap(mBitmap, width, height, false);
         }
 
@@ -147,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             this.canvas = canvas;
             paint.setColor(Color.GREEN);
             //canvas.drawBitmap(mBitmap,null,rect,paint);
-            canvas.drawBitmap(mBitmap,0,0,paint);
+            canvas.drawBitmap(mBitmap,reduceX/2,reduceY/2,paint);
         }
 
         @Override
@@ -157,9 +171,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
 
-                    p1.x = (int) x;
-                    p1.y = (int) y;
-                    final int sourceColor = mBitmap.getPixel((int) x, (int) y);
+                    p1.x = (int) x - (reduceX/2);
+                    p1.y = (int) y - (reduceY/2);
+                    final int sourceColor = mBitmap.getPixel(p1.x,p1.y);
                     final int targetColor = paint.getColor();
                     new TheTask(mBitmap, p1, sourceColor, targetColor).execute();
                     invalidate();
@@ -447,9 +461,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         // Represents a linear range to be filled and branched from.
         protected class FloodFillRange {
-            public int startX;
-            public int endX;
-            public int Y;
+            private int startX;
+            private int endX;
+            private int Y;
 
             public FloodFillRange(int startX, int endX, int y) {
                 this.startX = startX;

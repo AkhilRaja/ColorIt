@@ -48,7 +48,7 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.firstlayout);
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+       // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mLayoutManager = new GridLayoutManager(getApplicationContext(),1,GridLayoutManager.HORIZONTAL,false);

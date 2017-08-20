@@ -10,6 +10,8 @@
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
+
+
     <ImageView
         android:id="@+id/coringImage"
         android:layout_width="0dp"
@@ -24,51 +26,7 @@
         android:layout_marginEnd="2dp" />
 
 
-    <Button
-        android:id="@+id/btn_red"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="red"
-        tools:layout_editor_absoluteX="268dp"
-        tools:layout_editor_absoluteY="455dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/btn_yellow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="yellow"
-        tools:layout_conversion_absoluteHeight="48dp"
-        tools:layout_conversion_absoluteWidth="88dp"
-        tools:layout_conversion_absoluteX="162dp"
-        tools:layout_conversion_absoluteY="554dp"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="454dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginBottom="9dp" />
-
-    <Button
-        android:id="@+id/btn_blue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="blue"
-        tools:layout_conversion_absoluteHeight="48dp"
-        tools:layout_conversion_absoluteWidth="88dp"
-        tools:layout_conversion_absoluteX="250dp"
-        tools:layout_conversion_absoluteY="554dp"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="454dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        app:layout_constraintStart_toEndOf="@+id/btn_yellow"
-        android:layout_marginBottom="9dp" />
 
 
 </android.support.constraint.ConstraintLayout>
