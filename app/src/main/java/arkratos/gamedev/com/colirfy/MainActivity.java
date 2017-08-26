@@ -56,6 +56,7 @@ import nl.psdcompany.duonavigationdrawer.widgets.DuoDrawerToggle;
 
 public class MainActivity extends AppCompatActivity {
 
+    private int image_res;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -102,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        image_res = getIntent().getIntExtra("Image",R.drawable.cartoon);
+
+
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_palette);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -126,11 +130,6 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.setDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
-       /* DuoMenuView duoMenuView = (DuoMenuView) findViewById(R.id.menu);
-        arkratos.gamedev.com.colirfy.MenuAdapter menuAdapter = new arkratos.gamedev.com.colirfy.MenuAdapter(menuOptions);
-        //MenuAdapter menuAdapter = new MenuAdapter(mMenuOptions);
-        duoMenuView.setAdapter(menuAdapter);
-*/
         paletteList =  new ArrayList<>();
         for (String[] i : colorset) {
             palette = new Palette(i);
@@ -157,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onBoomButtonClick(int index) {
                             // When the boom-button corresponding this builder is clicked.
-                            Toast.makeText(MainActivity.this, "Clicked " + index, Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(MainActivity.this, "Clicked " + index, Toast.LENGTH_SHORT).show();
                             paint.setColor(paletteList.get(palette_selected).get_color(index));
                         }
                     }).normalColor(paletteList.get(palette_selected).get_color(i));
@@ -218,8 +217,11 @@ public class MainActivity extends AppCompatActivity {
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeJoin(Paint.Join.ROUND);
             paint.setStrokeWidth(5f);
+
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inScaled = false;
             mBitmap = BitmapFactory.decodeResource(getResources(),
-                    R.drawable.cartoon).copy(Bitmap.Config.ARGB_8888, true);
+                    image_res,options).copy(Bitmap.Config.ARGB_8888, true);
 
             this.path = new Path();
 

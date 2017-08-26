@@ -26,14 +26,14 @@ public class SplashScreen extends AppCompatActivity {
         final VideoView mVideoView  = (VideoView)findViewById(R.id.videoView);
         //mVideoView.setMediaController(new MediaController(this));
         mVideoView.setVideoURI(uri);
-
+        mVideoView.setZOrderOnTop(true);
         //mVideoView.start();
 
         mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-                mVideoView.requestFocus();
                 mVideoView.start();
+
                 frameLayout.setVisibility(View.GONE);
 
             }

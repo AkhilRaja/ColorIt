@@ -1,5 +1,6 @@
 package arkratos.gamedev.com.colirfy;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +40,18 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder viewHolder, int i) {
+    public void onBindViewHolder(MyViewHolder viewHolder,final int i) {
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(view.getContext(),MainActivity.class);
+                intent.putExtra("Image",FirstActivity.resources[i]);
+
+                view.getContext().startActivity(intent);
+            }
+        });
         viewHolder.imageView.setImageResource(Iresource[i]);
     }
 

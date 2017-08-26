@@ -24,9 +24,9 @@ public class FirstActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    private int[] resources = new int[]{
-            R.drawable.first,
-            R.drawable.second,
+    public static int[] resources = new int[]{
+            R.drawable.one,
+            R.drawable.two,
             R.drawable.three,
             R.drawable.four,
             R.drawable.five,
@@ -36,11 +36,7 @@ public class FirstActivity extends AppCompatActivity {
             R.drawable.nine,
             R.drawable.ten,
             R.drawable.eleven,
-            R.drawable.twelve,
-            R.drawable.thirteen,
-            R.drawable.fifteen,
-            R.drawable.sixteen,
-            R.drawable.seventeen
+            R.drawable.twelve
     };
 
     @Override

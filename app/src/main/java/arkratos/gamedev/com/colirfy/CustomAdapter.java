@@ -30,11 +30,11 @@ private int selectedPos = 0;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            circle1 = (View) itemView.findViewById(R.id.circle1);
-            circle2 = (View) itemView.findViewById(R.id.circle2);
-            circle3 = (View) itemView.findViewById(R.id.circle3);
-            circle4 = (View) itemView.findViewById(R.id.circle4);
-            circle5 = (View) itemView.findViewById(R.id.circle5);
+            circle1 = itemView.findViewById(R.id.circle1);
+            circle2 = itemView.findViewById(R.id.circle2);
+            circle3 = itemView.findViewById(R.id.circle3);
+            circle4 = itemView.findViewById(R.id.circle4);
+            circle5 = itemView.findViewById(R.id.circle5);
         }
     }
     @Override
