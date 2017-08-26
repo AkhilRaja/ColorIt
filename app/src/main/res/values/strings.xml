@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Coloring Book</string>
+    <string name="app_name">Artself</string>
     <string name="action_settings">Settings</string>
     <string name="bottom_sheet">Settings</string>
     <string name="bottom_sheet_content">Settings</string>

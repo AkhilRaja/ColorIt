@@ -19,6 +19,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     {
         Iresource = iresource;
     }
+
     public class MyViewHolder extends RecyclerView.ViewHolder{
         public ImageView imageView;
 
