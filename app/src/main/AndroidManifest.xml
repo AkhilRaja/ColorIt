@@ -11,6 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         <activity
+            android:name=".SplashScreen"
+             >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".FirstActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
@@ -20,21 +30,20 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
-
         </activity>
-        <activity
-            android:name=".SplashScreen"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
 
     </application>
 
