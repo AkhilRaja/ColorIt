@@ -41,7 +41,7 @@ public class SplashScreen extends AppCompatActivity {
 
         mVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer mp) {
-                Intent intent = new Intent(getApplicationContext(),FirstActivity.class);
+                Intent intent = new Intent(getApplicationContext(),HomeScreen.class);
                 startActivity(intent);
             }
         });

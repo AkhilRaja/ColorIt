@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "402683750295",
+    "firebase_url": "https://artself-db9ae.firebaseio.com",
+    "project_id": "artself-db9ae",
+    "storage_bucket": "artself-db9ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402683750295:android:ef62fa1f57663881",
+        "android_client_info": {
+          "package_name": "com.gamedev.arkratos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402683750295-eenio9iurf251ok4g8pvv99m7ov4s4pg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gamedev.arkratos",
+            "certificate_hash": "c71ada236b9de01841ba4cdb0c3152a50454ed88"
+          }
+        },
+        {
+          "client_id": "402683750295-a06svev6qj3h9nvh4qqi80cjndgoemr9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3VwDT_1vWcUHF2Kk-tcVdMmwrpUsQCtU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402683750295-a06svev6qj3h9nvh4qqi80cjndgoemr9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
