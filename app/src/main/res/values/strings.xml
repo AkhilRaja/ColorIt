@@ -4,4 +4,6 @@
     <string name="bottom_sheet">Settings</string>
     <string name="bottom_sheet_content">Settings</string>
     <string name="preference_title">Color Picker</string>
+    <string name="use_case_title_static">Use case #1. Static responses</string>
+    <string name="use_case_desc_static">Use static responses to test in-app billing</string>
 </resources>

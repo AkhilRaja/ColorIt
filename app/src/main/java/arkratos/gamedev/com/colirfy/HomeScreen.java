@@ -1,8 +1,10 @@
 package arkratos.gamedev.com.colirfy;
 
+import android.content.Intent;
 import android.support.annotation.BinderThread;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import butterknife.BindView;
@@ -24,5 +26,12 @@ public class HomeScreen extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
+        button_store.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Store.class);
+                startActivity(intent);
+            }
+        });
     }
 }

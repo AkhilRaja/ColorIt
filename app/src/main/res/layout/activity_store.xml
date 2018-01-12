@@ -4,6 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="arkratos.gamedev.com.colirfy.Store">
+    tools:context="arkratos.gamedev.com.colirfy.Store"
+    tools:layout_editor_absoluteY="25dp">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerview_store"
+        >
+    </android.support.v7.widget.RecyclerView>
 
 </android.support.constraint.ConstraintLayout>
